@@ -52,7 +52,7 @@ export function printQrCode(
   return NyxPrinter.printQrCode(content, width, height);
 }
 
-export function printBitmap(inputBytes: byte[]): Promise<number> {
+export function printBitmap(inputBytes: number[]): Promise<number> {
   return NyxPrinter.printBitmap(inputBytes);
 }
 

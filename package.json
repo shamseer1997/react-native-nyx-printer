@@ -1,6 +1,6 @@
 {
   "name": "react-native-nyx-printer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Use Nyx devices Printer such as NB55 in React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -44,13 +44,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/mrkpatchaa/react-native-nyx-printer",
-  "author": "Médédé Raymond KPATCHAA <kraymond70@gmail.com> (https://github.com/mrkpatchaa)",
+  "repository": "https://github.com/shamseer1997/react-native-nyx-printer",
+  "author": "shamseer <shamseerk1997@gmail.com> (https://github.com/shamseer1997)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrkpatchaa/react-native-nyx-printer/issues"
+    "url": "https://github.com/shamseer1997/react-native-nyx-printer/issues"
   },
-  "homepage": "https://github.com/mrkpatchaa/react-native-nyx-printer#readme",
+  "homepage": "https://github.com/shamseer1997/react-native-nyx-printer#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -156,7 +156,8 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.build.json",
+          "tsc": "./node_modules/.bin/tsc"
         }
       ]
     ]

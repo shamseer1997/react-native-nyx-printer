@@ -1,10 +1,10 @@
 export default class NyxTextFormat {
   textSize: number;
   underline: boolean;
-  textScaleX: double;
-  textScaleY: double;
-  letterSpacing: double;
-  lineSpacing: double;
+  textScaleX: number;
+  textScaleY: number;
+  letterSpacing: number;
+  lineSpacing: number;
   topPadding: number;
   leftPadding: number;
   align: NyxAlign;
@@ -25,7 +25,7 @@ export default class NyxTextFormat {
     this.font = NyxFont.defaultFont;
   }
 
-  toObject(): Record<string, number | double> {
+  toObject(): Record<string, number | boolean> {
     return {
       textSize: this.textSize,
       underline: this.underline,
@@ -63,14 +63,14 @@ export default class NyxTextFormat {
   }
 }
 
-enum NyxFontStyle {
+export enum NyxFontStyle {
   normal,
   bold,
   italic,
   boldItalic,
 }
 
-enum NyxFont {
+export enum NyxFont {
   defaultFont,
   defaultBold,
   sansSerif,
@@ -78,7 +78,7 @@ enum NyxFont {
   monospace,
 }
 
-enum NyxAlign {
+export enum NyxAlign {
   left,
   center,
   right,

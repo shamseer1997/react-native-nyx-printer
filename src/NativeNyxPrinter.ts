@@ -6,7 +6,7 @@ export interface Spec extends TurboModule {
   printText(text: string, textFormat: Object): Promise<number>;
   printBarcode(content: string, width: number, height: number): Promise<number>;
   printQrCode(content: string, width: number, height: number): Promise<number>;
-  printBitmap(inputBytes: byte[]): Promise<number>;
+  printBitmap(inputBytes: number[]): Promise<number>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('NyxPrinter');

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { multiply, printText, NyxTextFormat } from 'react-native-nyx-printer';
+import { multiply, printText } from 'react-native-nyx-printer';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
