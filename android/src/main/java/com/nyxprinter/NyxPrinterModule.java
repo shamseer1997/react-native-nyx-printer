@@ -37,16 +37,17 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import android.widget.Toast;
 
 public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
   public static final String NAME = "NyxPrinter";
 
-  private final Context mContext;
+  private final ReactApplicationContext mContext;
   String[] version = new String[1];
 
   NyxPrinterModule(ReactApplicationContext context) {
     super(context);
-    mContext = context.getApplicationContext();
+    mContext = context;
     startService();
   }
 
@@ -176,6 +177,7 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
 
   private void showLog(String s) {
     Log.d("NyxPrinterModule", s);
+    Toast.makeText(mContext, s, Toast.LENGTH_LONG).show();
   }
 
   private void paperOut() {
