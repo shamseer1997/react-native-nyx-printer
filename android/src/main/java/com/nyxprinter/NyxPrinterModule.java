@@ -177,7 +177,6 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
 
   private void showLog(String s) {
     Log.d("NyxPrinterModule", s);
-//    Toast.makeText(mContext, s, Toast.LENGTH_LONG).show();
   }
 
   private void paperOut() {
@@ -185,7 +184,8 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
       @Override
       public void run() {
         try {
-          printerService.paperOut(80);
+          int ret = printerService.paperOut(80);
+          showLog("Paper Out: "+ret);
         } catch (RemoteException e) {
           printStackE(e);
         }
@@ -226,10 +226,6 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
           printTextFormat.setFont(textFormat.getInt("font"));
           int ret = printerService.printText(content, printTextFormat);
           showLog("Print text: " + msg(ret));
-          if (ret == 0) {
-            paperOut();
-              //paperOutText(textFormat.getInt("textSize"));
-          }
           promise.resolve(ret);
         } catch (RemoteException e) {
           printStackE(e);
@@ -247,9 +243,6 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
         try {
           int ret = printerService.printBarcode(content, (int) width, (int) height, 1, 1);
           showLog("Print barcode: " + msg(ret));
-          if (ret == 0) {
-            paperOut();
-          }
           promise.resolve(ret);
         } catch (RemoteException e) {
           printStackE(e);
@@ -267,9 +260,6 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
         try {
           int ret = printerService.printQrCode(content, (int) width, (int) height, 1);
           showLog("Print qrCode: " + msg(ret));
-          if (ret == 0) {
-            paperOut();
-          }
           promise.resolve(ret);
         } catch (RemoteException e) {
           printStackE(e);
@@ -291,9 +281,6 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
           decoded.compress(Bitmap.CompressFormat.PNG, 100, stream);
           int ret = printerService.printBitmap(decoded, 1, 1);
           showLog("Print bitmap: " + msg(ret));
-          if (ret == 0) {
-            paperOut();
-          }
           promise.resolve(ret);
         } catch (Exception e) {
           printStackE(e);
