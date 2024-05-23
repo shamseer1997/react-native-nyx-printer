@@ -177,7 +177,7 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
 
   private void showLog(String s) {
     Log.d("NyxPrinterModule", s);
-    Toast.makeText(mContext, s, Toast.LENGTH_LONG).show();
+//    Toast.makeText(mContext, s, Toast.LENGTH_LONG).show();
   }
 
   private void paperOut() {
