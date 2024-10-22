@@ -38,6 +38,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import android.widget.Toast;
+import android.os.Build;
 
 public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
   public static final String NAME = "NyxPrinter";
@@ -83,8 +84,14 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
 
   private void startService() {
     Intent intent = new Intent();
-    intent.setPackage("net.nyx.printerservice");
-    intent.setAction("net.nyx.printerservice.IPrinterService");
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {  // Android 13 and above
+      intent.setPackage("com.incar.printerservice");
+      intent.setAction("com.incar.printerservice.IPrinterService");
+    } else {  // For Android versions below 13
+        intent.setPackage("net.nyx.printerservice");
+        intent.setAction("net.nyx.printerservice.IPrinterService");
+    }
     mContext.bindService(intent, connService, Context.BIND_AUTO_CREATE);
     showLog("startService");
   }

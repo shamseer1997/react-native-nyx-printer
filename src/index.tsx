@@ -56,4 +56,8 @@ export function printBitmap(inputBytes: number[]): Promise<number> {
   return NyxPrinter.printBitmap(inputBytes);
 }
 
+export function paperOut(): Promise<number> {
+  return NyxPrinter.paperOut();
+}
+
 export { NyxTextFormat };
