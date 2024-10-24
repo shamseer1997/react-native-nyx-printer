@@ -186,18 +186,21 @@ public class NyxPrinterModule extends com.nyxprinter.NyxPrinterSpec {
     Log.d("NyxPrinterModule", s);
   }
 
-  private void paperOut() {
+  @ReactMethod
+  private void paperOut( Promise promise) {
     executeTask(new Runnable() {
       @Override
       public void run() {
         try {
           int ret = printerService.paperOut(80);
-          showLog("Paper Out: "+ret);
+          showLog("Paper out: " + msg(ret));
+          promise.resolve(ret);
         } catch (RemoteException e) {
           printStackE(e);
+          promise.reject(e);
         }
       }
-    });
+    }, promise);
   }
 
   private void paperOutText(int size) {

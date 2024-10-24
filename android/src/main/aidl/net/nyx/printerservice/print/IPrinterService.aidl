@@ -24,8 +24,8 @@ interface IPrinterService {
      *
      * @param text       text content
      * @param textFormat text format
-     * @param textWidth  maximum text width, <384px
-     * @param align      The alignment of the maximum text width relative to the 384px printing paper
+     * @param textWidth  maximum text width
+     * @param align      The alignment of the maximum text width relative to the printing paper
      *                   The default is 0. 0--Align left, 1--Align center, 2--Align right
      * @return Print result
      */
@@ -116,4 +116,70 @@ interface IPrinterService {
      */
     int clearLabelLearning();
 
+    /**
+     * Print raster bitmap data
+     *
+     * @param bytes raster bitmap data
+     * @return Result
+     */
+    int printRasterData(in byte[] bytes);
+
+    /**
+     * Print ESC/POS commands
+     *
+     * @param cmd ESC/POS commands
+     * @return Result
+     */
+    int printEscposData(in byte[] cmd);
+
+    /**
+     * Print a row of a table
+     *
+     * @param texts   table row contents
+     * @param weights column width weight
+     * @param formats text format for each column
+     * @return Result
+     */
+    int printTableText(in String[] texts, in int[] weights, in PrintTextFormat[] formats);
+
+    /**
+     * After printing, feed paper to cutting position
+     *
+     * @return Result
+     */
+    int printEndAutoOut();
+
+    /**
+     * Show bitmap in customer display LCD
+     *
+     * @param bitmap Android bitmap object
+     * @return Result
+     * @since PrinterService v1.5.9
+     */
+    int showLcdBitmap(in Bitmap bitmap);
+
+    /**
+     * Control the status of the customer display LCD
+     *
+     * @param flag 0--init 1--wakeup LCD 2--sleep LCD 3--clear LCD 4--reset LCD display
+     * @return Result
+     * @since PrinterService v1.6.3
+     */
+    int configLcd(int flag);
+
+    /**
+     * Open cash drawer
+     *
+     * @return Result
+     * @since PrinterService v1.6.1
+     */
+    int openCashBox();
+
+    /**
+     * Trigger infrared scan
+     *
+     * @return Result
+     * @since PrinterService v1.7.0
+     */
+    int triggerQscScan();
 }
