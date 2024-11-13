@@ -1,7 +1,7 @@
 {
   "name": "react-native-nyx-printer",
-  "version": "2.0.1",
-  "description": "Use Nyx devices Printer such as NB55 in React Native",
+  "version": "2.0.2",
+  "description": "Use Nyx devices Printer such as NB55,T2PRO in React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
